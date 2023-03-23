@@ -1,6 +1,6 @@
-# san_guo_sha
+# 三国杀
 
-An online san guo sha game.
+在线三国杀游戏，前端由flutter开发，后端由Firebase Realtime Database实现。
 
 ## Getting Started
 
