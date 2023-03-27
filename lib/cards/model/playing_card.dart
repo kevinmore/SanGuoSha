@@ -3,16 +3,23 @@ import 'card_value.dart';
 class PlayingCard {
   late final CardType type;
   late final String name;
+  late final String description;
   late final String imageUrl;
 
   // Constructor
-  PlayingCard({required this.type, required this.name, required this.imageUrl});
+  PlayingCard({
+    required this.type,
+    required this.name,
+    required this.description,
+    required this.imageUrl,
+  });
 
   // Convert Card object to Map object
   Map<String, dynamic> toMap() {
     return {
       'type': type.index,
       'name': name,
+      'description': description,
       'imageUrl': imageUrl,
     };
   }
@@ -35,9 +42,16 @@ class RoleCard extends PlayingCard {
   final RoleCardValue value;
 
   // Constructor
-  RoleCard(
-      {required this.value, required String name, required String imageUrl})
-      : super(type: CardType.role, name: name, imageUrl: imageUrl);
+  RoleCard({
+    required this.value,
+    required String name,
+    required String description,
+    required String imageUrl,
+  }) : super(
+            type: CardType.role,
+            name: name,
+            description: description,
+            imageUrl: imageUrl);
 
   // Convert RoleCard object to Map object
   @override
@@ -46,6 +60,7 @@ class RoleCard extends PlayingCard {
       'type': type.index,
       'value': value.index,
       'name': name,
+      'description': description,
       'imageUrl': imageUrl,
     };
   }
@@ -55,6 +70,7 @@ class RoleCard extends PlayingCard {
     return RoleCard(
       value: RoleCardValue.values[map['value']],
       name: map['name'],
+      description: map['description'],
       imageUrl: map['imageUrl'],
     );
   }
@@ -64,9 +80,16 @@ class CharacterCard extends PlayingCard {
   CharacterCardValue value;
 
   // Constructor
-  CharacterCard(
-      {required this.value, required String name, required String imageUrl})
-      : super(type: CardType.character, name: name, imageUrl: imageUrl);
+  CharacterCard({
+    required this.value,
+    required String name,
+    required String description,
+    required String imageUrl,
+  }) : super(
+            type: CardType.character,
+            name: name,
+            description: description,
+            imageUrl: imageUrl);
 
   // Convert CharacterCard object to Map object
   @override
@@ -75,6 +98,7 @@ class CharacterCard extends PlayingCard {
       'type': type.index,
       'value': value.index,
       'name': name,
+      'description': description,
       'imageUrl': imageUrl,
     };
   }
@@ -84,6 +108,7 @@ class CharacterCard extends PlayingCard {
     return CharacterCard(
       value: CharacterCardValue.values[map['value']],
       name: map['name'],
+      description: map['description'],
       imageUrl: map['imageUrl'],
     );
   }
@@ -94,12 +119,17 @@ class DeckCard extends PlayingCard {
   Suit suit;
 
   // Constructor
-  DeckCard(
-      {required this.value,
-      required this.suit,
-      required String name,
-      required String imageUrl})
-      : super(type: CardType.deck, name: name, imageUrl: imageUrl);
+  DeckCard({
+    required this.value,
+    required this.suit,
+    required String name,
+    required String description,
+    required String imageUrl,
+  }) : super(
+            type: CardType.deck,
+            name: name,
+            description: description,
+            imageUrl: imageUrl);
 
   // Convert DeckCard object to Map object
   @override
@@ -109,6 +139,7 @@ class DeckCard extends PlayingCard {
       'value': value.index,
       'suit': suit.index,
       'name': name,
+      'description': description,
       'imageUrl': imageUrl,
     };
   }
@@ -119,6 +150,7 @@ class DeckCard extends PlayingCard {
       value: DeckCardValue.values[map['value']],
       suit: Suit.values[map['suit']],
       name: map['name'],
+      description: map['description'],
       imageUrl: map['imageUrl'],
     );
   }

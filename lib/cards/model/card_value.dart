@@ -13,6 +13,7 @@ enum Suit {
 
 // deck card values
 enum DeckCardValue {
+  ace,
   two,
   three,
   four,
@@ -25,7 +26,6 @@ enum DeckCardValue {
   jack,
   queen,
   king,
-  ace,
 }
 
 // role card values
@@ -50,7 +50,7 @@ enum CharacterCardValue {
   zhugeLiang,
   zhaoYun,
   maChao,
-  HuangYueying,
+  huangYueying,
 
   // wei
   caoCao,
