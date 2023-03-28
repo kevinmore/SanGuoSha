@@ -176,3 +176,8 @@ Map<Suit, Map<DeckCardValue, String>> deckBCardImageMap = {
     DeckCardValue.king: "assets/card_images/deck/紫骍.png",
   },
 };
+
+List<Map<Suit, Map<DeckCardValue, String>>> deckCardImageMapList = [
+  deckACardImageMap,
+  deckBCardImageMap,
+];

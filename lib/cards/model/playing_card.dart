@@ -117,11 +117,13 @@ class CharacterCard extends PlayingCard {
 class DeckCard extends PlayingCard {
   DeckCardValue value;
   Suit suit;
+  int deck; // 0, 1, 2...
 
   // Constructor
   DeckCard({
     required this.value,
     required this.suit,
+    required this.deck,
     required String name,
     required String description,
     required String imageUrl,
@@ -138,6 +140,7 @@ class DeckCard extends PlayingCard {
       'type': type.index,
       'value': value.index,
       'suit': suit.index,
+      'deck': deck,
       'name': name,
       'description': description,
       'imageUrl': imageUrl,
@@ -149,6 +152,7 @@ class DeckCard extends PlayingCard {
     return DeckCard(
       value: DeckCardValue.values[map['value']],
       suit: Suit.values[map['suit']],
+      deck: map['deck'],
       name: map['name'],
       description: map['description'],
       imageUrl: map['imageUrl'],

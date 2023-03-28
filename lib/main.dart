@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:san_guo_sha/cards/model/card_value.dart';
+import 'package:san_guo_sha/cards/model/playing_card.dart';
+
+import 'cards/view/playing_card_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -95,13 +99,23 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            Container(
+              height: 400,
+              child: PlayingCardWidget(
+                // showBack: true,
+                card: DeckCard(
+                    deck: 0,
+                    suit: Suit.spades,
+                    value: DeckCardValue.queen,
+                    name: "",
+                    imageUrl: "",
+                    description: ""),
+              ),
+            )
+            // Text(
+            //   '$_counter',
+            //   style: Theme.of(context).textTheme.headlineMedium,
+            // ),
           ],
         ),
       ),
