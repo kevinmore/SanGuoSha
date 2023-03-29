@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        fontFamily: 'MaShanZheng',
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -104,14 +105,16 @@ class _MyHomePageState extends State<MyHomePage> {
               child: PlayingCardWidget(
                 // showBack: true,
                 card: DeckCard(
-                    deck: 0,
-                    suit: Suit.spades,
-                    value: DeckCardValue.queen,
-                    name: "",
-                    imageUrl: "",
-                    description: ""),
+                  deck: 1,
+                  suit: Suit.spades,
+                  value: DeckCardValue.king,
+                ),
+
+                // card: RoleCard(value: RoleCardValue.fanZei),
+
+                // card: CharacterCard(value: CharacterCardValue.caoCao),
               ),
-            )
+            ),
             // Text(
             //   '$_counter',
             //   style: Theme.of(context).textTheme.headlineMedium,
