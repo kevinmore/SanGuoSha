@@ -9,46 +9,46 @@ Map<RoleCardValue, String> roleCardImageMap = {
 
 Map<CharacterCardValue, String> characterCardImageMap = {
   // qun
-  CharacterCardValue.huaTuo: "assets/card_images/characters/qun/QUN_001_华佗.png",
-  CharacterCardValue.lvBu: "assets/card_images/characters/qun/QUN_002_吕布.png",
+  CharacterCardValue.huaTuo: "assets/card_images/characters/QUN_001_华佗.png",
+  CharacterCardValue.lvBu: "assets/card_images/characters/QUN_002_吕布.png",
   CharacterCardValue.diaoChan:
-      "assets/card_images/characters/qun/QUN_003_貂蝉.png",
+      "assets/card_images/characters/QUN_003_貂蝉.png",
 
   // shu
-  CharacterCardValue.liuBei: "assets/card_images/characters/shu/SHU_001_刘备.png",
-  CharacterCardValue.guanYu: "assets/card_images/characters/shu/SHU_002_关羽.png",
+  CharacterCardValue.liuBei: "assets/card_images/characters/SHU_001_刘备.png",
+  CharacterCardValue.guanYu: "assets/card_images/characters/SHU_002_关羽.png",
   CharacterCardValue.zhangFei:
-      "assets/card_images/characters/shu/SHU_003_张飞.png",
+      "assets/card_images/characters/SHU_003_张飞.png",
   CharacterCardValue.zhugeLiang:
-      "assets/card_images/characters/shu/SHU_004_诸葛亮.png",
+      "assets/card_images/characters/SHU_004_诸葛亮.png",
   CharacterCardValue.zhaoYun:
-      "assets/card_images/characters/shu/SHU_005_赵云.png",
-  CharacterCardValue.maChao: "assets/card_images/characters/shu/SHU_006_马超.png",
+      "assets/card_images/characters/SHU_005_赵云.png",
+  CharacterCardValue.maChao: "assets/card_images/characters/SHU_006_马超.png",
   CharacterCardValue.huangYueying:
-      "assets/card_images/characters/shu/SHU_007_黄月英.png",
+      "assets/card_images/characters/SHU_007_黄月英.png",
 
   // wei
-  CharacterCardValue.caoCao: "assets/card_images/characters/wei/WEI_001_曹操.png",
+  CharacterCardValue.caoCao: "assets/card_images/characters/WEI_001_曹操.png",
   CharacterCardValue.simaYi:
-      "assets/card_images/characters/wei/WEI_002_司马懿.png",
+      "assets/card_images/characters/WEI_002_司马懿.png",
   CharacterCardValue.xiahouDun:
-      "assets/card_images/characters/wei/WEI_003_夏侯惇.png",
+      "assets/card_images/characters/WEI_003_夏侯惇.png",
   CharacterCardValue.zhangLiao:
-      "assets/card_images/characters/wei/WEI_004_张辽.png",
-  CharacterCardValue.xuChu: "assets/card_images/characters/wei/WEI_005_许诸.png",
-  CharacterCardValue.guoJia: "assets/card_images/characters/wei/WEI_006_郭嘉.png",
-  CharacterCardValue.zhenJi: "assets/card_images/characters/wei/WEI_007_甄姬.png",
+      "assets/card_images/characters/WEI_004_张辽.png",
+  CharacterCardValue.xuChu: "assets/card_images/characters/WEI_005_许诸.png",
+  CharacterCardValue.guoJia: "assets/card_images/characters/WEI_006_郭嘉.png",
+  CharacterCardValue.zhenJi: "assets/card_images/characters/WEI_007_甄姬.png",
 
   // wu
-  CharacterCardValue.sunQuan: "assets/card_images/characters/wu/WU_001_孙权.png",
-  CharacterCardValue.ganNing: "assets/card_images/characters/wu/WU_002_甘宁.png",
-  CharacterCardValue.lvMeng: "assets/card_images/characters/wu/WU_003_吕蒙.png",
-  CharacterCardValue.huangGai: "assets/card_images/characters/wu/WU_004_黄盖.png",
-  CharacterCardValue.zhouYu: "assets/card_images/characters/wu/WU_005_周瑜.png",
-  CharacterCardValue.daQiao: "assets/card_images/characters/wu/WU_006_大乔.png",
-  CharacterCardValue.luXun: "assets/card_images/characters/wu/WU_007_陆逊.png",
+  CharacterCardValue.sunQuan: "assets/card_images/characters/WU_001_孙权.png",
+  CharacterCardValue.ganNing: "assets/card_images/characters/WU_002_甘宁.png",
+  CharacterCardValue.lvMeng: "assets/card_images/characters/WU_003_吕蒙.png",
+  CharacterCardValue.huangGai: "assets/card_images/characters/WU_004_黄盖.png",
+  CharacterCardValue.zhouYu: "assets/card_images/characters/WU_005_周瑜.png",
+  CharacterCardValue.daQiao: "assets/card_images/characters/WU_006_大乔.png",
+  CharacterCardValue.luXun: "assets/card_images/characters/WU_007_陆逊.png",
   CharacterCardValue.sunShangXiang:
-      "assets/card_images/characters/wu/WU_008_孙尚香.png",
+      "assets/card_images/characters/WU_008_孙尚香.png",
 };
 
 Map<Suit, Map<DeckCardValue, String>> deckACardImageMap = {
