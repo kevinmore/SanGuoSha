@@ -3,25 +3,26 @@ import '../model/playing_card.dart';
 import '../util/card_aspect_ratio.dart';
 import 'card_images_map.dart';
 
-class PlayingCardWidget extends StatelessWidget {
+class PlayingCardWidget extends StatefulWidget {
   final PlayingCard card;
   final bool showBack;
-
-  /// These fields are passed to the underlying material card.
-  final ShapeBorder? shape;
-  final double? elevation;
 
   const PlayingCardWidget({
     Key? key,
     required this.card,
     this.showBack = false,
-    this.shape,
-    this.elevation,
   }) : super(key: key);
 
+  @override
+  State<PlayingCardWidget> createState() => _PlayingCardWidgetState();
+}
+
+class _PlayingCardWidgetState extends State<PlayingCardWidget> {
+  bool _isHovered = false;
+
   Widget createDeckCardBody() {
-    final deckCard = card as DeckCard;
-    final cardImageFileName = showBack
+    final deckCard = widget.card as DeckCard;
+    final cardImageFileName = widget.showBack
         ? "assets/card_images/deck/card_back.png"
         : deckCardImageMapList[deckCard.deck][deckCard.suit]![deckCard.value];
     return Image.asset(
@@ -34,13 +35,24 @@ class PlayingCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: playingCardAspectRatio,
-      child: Card(
-        shape: shape ?? RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(7.5),
+      child: MouseRegion(
+        onEnter: (event) => setState(() {
+          _isHovered = true;
+        }),
+        onExit: (event) => setState(() {
+          _isHovered = false;
+        }),
+        child: Card(
+          elevation: _isHovered ? 8.0 : 2.0,
+          shape: RoundedRectangleBorder(
+            side: _isHovered
+                ? const BorderSide(color: Colors.blue, width: 3)
+                : const BorderSide(),
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: createDeckCardBody(),
         ),
-        elevation: elevation,
-        clipBehavior: Clip.antiAlias,
-        child: createDeckCardBody(),
       ),
     );
   }
