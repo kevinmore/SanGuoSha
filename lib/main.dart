@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'MaShanZheng',
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: '三国杀'),
     );
   }
 }
@@ -100,20 +100,17 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              height: 400,
-              child: PlayingCardWidget(
-                // showBack: true,
-                card: DeckCard(
-                  deck: 1,
-                  suit: Suit.spades,
-                  value: DeckCardValue.king,
-                ),
-
-                // card: RoleCard(value: RoleCardValue.fanZei),
-
-                // card: CharacterCard(value: CharacterCardValue.caoCao),
+            PlayingCardWidget(
+              // showBack: true,
+              card: DeckCard(
+                deck: 1,
+                suit: Suit.spades,
+                value: DeckCardValue.king,
               ),
+
+              // card: RoleCard(value: RoleCardValue.fanZei),
+
+              // card: CharacterCard(value: CharacterCardValue.caoCao),
             ),
             // Text(
             //   '$_counter',

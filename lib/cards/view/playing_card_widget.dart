@@ -9,11 +9,13 @@ import 'card_texts_mapping.dart';
 class PlayingCardWidget extends StatefulWidget {
   final PlayingCard card;
   final bool showBack;
+  final double? height;
 
   const PlayingCardWidget({
     Key? key,
     required this.card,
     this.showBack = false,
+    this.height,
   }) : super(key: key);
 
   @override
@@ -22,6 +24,7 @@ class PlayingCardWidget extends StatefulWidget {
 
 class _PlayingCardWidgetState extends State<PlayingCardWidget> {
   bool _isHovered = false;
+  double _defaultHeight = 400;
 
   Widget createDeckCardBody(BuildContext context) {
     if (widget.showBack) {
@@ -73,8 +76,10 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
               deckCardValueTextMap[deckCard.value]!,
               style: TextStyle(
                   color: suitColorMap[deckCard.suit],
-                  fontSize: getGoodFontSize("I0",
-                      Theme.of(context).textTheme.labelLarge!, sideSpace * .45)),
+                  fontSize: getGoodFontSize(
+                      "I0",
+                      Theme.of(context).textTheme.labelLarge!,
+                      sideSpace * .45)),
               maxLines: 1,
               softWrap: false,
               textAlign: TextAlign.center,
@@ -89,15 +94,17 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
               child: Column(children: [label, suit]),
             );
 
-            return Stack(
-              children: [
-                background,
-                Positioned(
-                  left: sideOffset,
-                  top: topOffset,
-                  child: cornerContainer,
-                )
-              ],
+            return FittedBox(
+              child: Stack(
+                children: [
+                  background,
+                  Positioned(
+                    left: sideOffset,
+                    top: topOffset,
+                    child: cornerContainer,
+                  )
+                ],
+              ),
             );
           },
         );
@@ -106,8 +113,9 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: playingCardAspectRatio,
+    return SizedBox(
+      height: widget.height ?? _defaultHeight,
+      width: (widget.height ?? _defaultHeight) * playingCardAspectRatio,
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         onEnter: (event) => setState(() {
