@@ -9,12 +9,14 @@ import 'card_texts_mapping.dart';
 class PlayingCardWidget extends StatefulWidget {
   final PlayingCard card;
   final bool isFacingDown;
+  final bool isSelectable;
   final double? height;
 
   const PlayingCardWidget({
     Key? key,
     required this.card,
     this.isFacingDown = false,
+    this.isSelectable = false,
     this.height,
   }) : super(key: key);
 
@@ -26,7 +28,7 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
   bool _isHovered = false;
   final double _defaultHeight = 400;
 
-  Widget createDeckCardBody(BuildContext context) {
+  Widget createCardContent(BuildContext context) {
     if (widget.isFacingDown) {
       return Image.asset(
         "assets/card_images/deck/card_back.png",
@@ -96,7 +98,8 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                    deckCardImageMapList[deckCard.deck][deckCard.suit]![deckCard.value]!,
+                    deckCardImageMapList[deckCard.deck]
+                        [deckCard.suit]![deckCard.value]!,
                   ),
                   fit: BoxFit.fill,
                 ),
@@ -116,31 +119,38 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
     }
   }
 
+  Widget createCard(BuildContext context) {
+    return Card(
+      elevation: _isHovered ? 8.0 : 2.0,
+      shape: RoundedRectangleBorder(
+        side: _isHovered
+            ? const BorderSide(color: Colors.blue, width: 3)
+            : const BorderSide(),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: createCardContent(context),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final cardWidget = createCard(context);
     return SizedBox(
       height: widget.height ?? _defaultHeight,
       width: (widget.height ?? _defaultHeight) * playingCardAspectRatio,
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        onEnter: (event) => setState(() {
-          _isHovered = true;
-        }),
-        onExit: (event) => setState(() {
-          _isHovered = false;
-        }),
-        child: Card(
-          elevation: _isHovered ? 8.0 : 2.0,
-          shape: RoundedRectangleBorder(
-            side: _isHovered
-                ? const BorderSide(color: Colors.blue, width: 3)
-                : const BorderSide(),
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          clipBehavior: Clip.antiAlias,
-          child: createDeckCardBody(context),
-        ),
-      ),
+      child: widget.isSelectable
+          ? MouseRegion(
+              cursor: SystemMouseCursors.click,
+              onEnter: (event) => setState(() {
+                _isHovered = true;
+              }),
+              onExit: (event) => setState(() {
+                _isHovered = false;
+              }),
+              child: cardWidget,
+            )
+          : cardWidget,
     );
   }
 }
