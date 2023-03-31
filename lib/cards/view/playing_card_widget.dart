@@ -8,13 +8,13 @@ import 'card_texts_mapping.dart';
 
 class PlayingCardWidget extends StatefulWidget {
   final PlayingCard card;
-  final bool showBack;
+  final bool isFacingDown;
   final double? height;
 
   const PlayingCardWidget({
     Key? key,
     required this.card,
-    this.showBack = false,
+    this.isFacingDown = false,
     this.height,
   }) : super(key: key);
 
@@ -24,10 +24,10 @@ class PlayingCardWidget extends StatefulWidget {
 
 class _PlayingCardWidgetState extends State<PlayingCardWidget> {
   bool _isHovered = false;
-  double _defaultHeight = 400;
+  final double _defaultHeight = 400;
 
   Widget createDeckCardBody(BuildContext context) {
-    if (widget.showBack) {
+    if (widget.isFacingDown) {
       return Image.asset(
         "assets/card_images/deck/card_back.png",
         fit: BoxFit.fill,
@@ -49,10 +49,6 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
         );
       case CardType.deck:
         final deckCard = widget.card as DeckCard;
-        final background = Image.asset(
-          deckCardImageMapList[deckCard.deck][deckCard.suit]![deckCard.value]!,
-          fit: BoxFit.fill,
-        );
         return LayoutBuilder(
           builder: (context, constraints) {
             double width = constraints.hasBoundedWidth
@@ -94,10 +90,19 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
               child: Column(children: [label, suit]),
             );
 
-            return FittedBox(
+            return Container(
+              height: height,
+              width: width,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    deckCardImageMapList[deckCard.deck][deckCard.suit]![deckCard.value]!,
+                  ),
+                  fit: BoxFit.fill,
+                ),
+              ),
               child: Stack(
                 children: [
-                  background,
                   Positioned(
                     left: sideOffset,
                     top: topOffset,
