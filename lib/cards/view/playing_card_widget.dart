@@ -10,15 +10,25 @@ class PlayingCardWidget extends StatefulWidget {
   final PlayingCard card;
   final bool isFacingDown;
   final bool isSelectable;
-  final double? height;
+  final double height;
+  final double? elevation;
+
+  final Function(PlayingCard)? onMouseEnter;
+  final Function(PlayingCard)? onMouseExit;
 
   const PlayingCardWidget({
     Key? key,
     required this.card,
     this.isFacingDown = false,
     this.isSelectable = false,
-    this.height,
+    this.height = 400,
+    this.elevation,
+    this.onMouseEnter,
+    this.onMouseExit,
   }) : super(key: key);
+
+  double get cardHeight => height;
+  double get cardWidth => height * playingCardAspectRatio;
 
   @override
   State<PlayingCardWidget> createState() => _PlayingCardWidgetState();
@@ -26,7 +36,6 @@ class PlayingCardWidget extends StatefulWidget {
 
 class _PlayingCardWidgetState extends State<PlayingCardWidget> {
   bool _isHovered = false;
-  final double _defaultHeight = 400;
 
   Widget createCardContent(BuildContext context) {
     if (widget.isFacingDown) {
@@ -121,7 +130,7 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
 
   Widget createCard(BuildContext context) {
     return Card(
-      elevation: _isHovered ? 8.0 : 2.0,
+      // elevation: _isHovered ? 16.0 : widget.elevation,
       shape: RoundedRectangleBorder(
         side: _isHovered
             ? const BorderSide(color: Colors.blue, width: 3)
@@ -137,16 +146,18 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
   Widget build(BuildContext context) {
     final cardWidget = createCard(context);
     return SizedBox(
-      height: widget.height ?? _defaultHeight,
-      width: (widget.height ?? _defaultHeight) * playingCardAspectRatio,
+      height: widget.height,
+      width: widget.height * playingCardAspectRatio,
       child: widget.isSelectable
           ? MouseRegion(
               cursor: SystemMouseCursors.click,
               onEnter: (event) => setState(() {
                 _isHovered = true;
+                widget.onMouseEnter?.call(widget.card);
               }),
               onExit: (event) => setState(() {
                 _isHovered = false;
+                widget.onMouseExit?.call(widget.card);
               }),
               child: cardWidget,
             )

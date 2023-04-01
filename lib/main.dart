@@ -3,6 +3,9 @@ import 'package:san_guo_sha/cards/model/card_value.dart';
 import 'package:san_guo_sha/cards/model/playing_card.dart';
 
 import 'cards/view/playing_card_widget.dart';
+import 'cards/view/pile_of_cards_widget.dart';
+import 'cards/view/flat_card_fan_widget.dart';
+import 'cards/model/deck.dart';
 
 void main() {
   runApp(const MyApp());
@@ -68,6 +71,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    List<PlayingCard> cardsToDisplay = [
+      CharacterCard(value: CharacterCardValue.caoCao),
+      CharacterCard(value: CharacterCardValue.daQiao),
+      CharacterCard(value: CharacterCardValue.diaoChan),
+      CharacterCard(value: CharacterCardValue.ganNing),
+      CharacterCard(value: CharacterCardValue.guanYu),
+    ];
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -83,40 +94,16 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            PlayingCardWidget(
-              // showBack: true,
-              card: DeckCard(
-                deck: 1,
-                suit: Suit.spades,
-                value: DeckCardValue.king,
-              ),
-
-              // card: RoleCard(value: RoleCardValue.fanZei),
-
-              // card: CharacterCard(value: CharacterCardValue.caoCao),
-            ),
-            // Text(
-            //   '$_counter',
-            //   style: Theme.of(context).textTheme.headlineMedium,
-            // ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              FlatCardFanWidget(cards: roleCardsList()),
+              FlatCardFanWidget(cards: characterCardsList()),
+              FlatCardFanWidget(cards: deckACardsList()),
+              FlatCardFanWidget(cards: deckBCardsList()),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
