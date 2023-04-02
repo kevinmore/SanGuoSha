@@ -3,7 +3,7 @@ import 'package:san_guo_sha/cards/model/card_value.dart';
 import 'package:san_guo_sha/cards/model/playing_card.dart';
 
 import 'cards/view/playing_card_widget.dart';
-import 'cards/view/pile_of_cards_widget.dart';
+import 'cards/view/card_pile_widget.dart';
 import 'cards/view/flat_card_fan_widget.dart';
 import 'cards/model/deck.dart';
 
@@ -98,6 +98,14 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Row(
+                children: [
+                  CardPileWidget(cards: roleCardsList()),
+                  CardPileWidget(cards: characterCardsList()),
+                  CardPileWidget(cards: deckACardsList()),
+                  CardPileWidget(cards: deckBCardsList(), isFacingDown: true)
+                ],
+              ),
               FlatCardFanWidget(cards: roleCardsList()),
               FlatCardFanWidget(cards: characterCardsList()),
               FlatCardFanWidget(cards: deckACardsList()),
