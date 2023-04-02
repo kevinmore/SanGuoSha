@@ -83,22 +83,22 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
               deckCardValueTextMap[deckCard.value]!,
               style: TextStyle(
                   color: suitColorMap[deckCard.suit],
-                  fontSize: getGoodFontSize(
-                      "I0",
-                      Theme.of(context).textTheme.labelLarge!,
-                      sideSpace * .45)),
+                  fontSize: getGoodFontSize("I0",
+                      Theme.of(context).textTheme.labelLarge!, sideSpace * .45)),
               maxLines: 1,
               softWrap: false,
               textAlign: TextAlign.center,
             );
-            Widget suit = SizedBox(
-              height: labelSuitHeight,
-              child: Image.asset(suitSymbolMap[deckCard.suit]!),
-            );
 
-            Widget cornerContainer = SizedBox(
-              width: sideSpace,
-              child: Column(children: [label, suit]),
+            Widget suit = Text(
+              suitSymbolMap[deckCard.suit]!,
+              style: TextStyle(
+                  color: suitColorMap[deckCard.suit],
+                  fontSize: getGoodFontSize("♠",
+                      Theme.of(context).textTheme.labelLarge!, sideSpace * .5)),
+              maxLines: 1,
+              softWrap: false,
+              textAlign: TextAlign.center,
             );
 
             return Container(
@@ -118,7 +118,12 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
                   Positioned(
                     left: sideOffset,
                     top: topOffset,
-                    child: cornerContainer,
+                    child: SizedBox(width: sideSpace, child: label,),
+                  ),
+                  Positioned(
+                    left: sideOffset,
+                    top: topOffset + labelSuitHeight,
+                    child: SizedBox(width: sideSpace, child: suit,),
                   )
                 ],
               ),
@@ -135,7 +140,8 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
         side: _isHovered
             ? const BorderSide(color: Colors.blue, width: 3)
             : const BorderSide(),
-        borderRadius: BorderRadius.circular(8.0),
+        // 8.0 radius is good for the default 400.0 height
+        borderRadius: BorderRadius.circular(8.0 / 400.0 * widget.height),
       ),
       clipBehavior: Clip.antiAlias,
       child: createCardContent(context),
