@@ -7,8 +7,8 @@ enum CardType {
 enum Suit {
   spades,
   hearts,
-  diamonds,
   clubs,
+  diamonds,
 }
 
 // deck card values
