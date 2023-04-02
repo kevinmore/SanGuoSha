@@ -102,7 +102,7 @@ class _FlatCardFanWidgetState extends State<FlatCardFanWidget> {
         // calculate the overlapping space of any 2 cards
         double overlappingSpace = (cardWidth * widget.cards.length - maxWidth) /
             (widget.cards.length - 1);
-        double offset = overlappingSpace / maxWidth;
+        double offset = overlappingSpace / (maxWidth - cardWidth);
 
         // right part
         for (int i = selectedIndex + 1; i < widget.cards.length; ++i) {
