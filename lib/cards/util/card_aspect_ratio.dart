@@ -1,2 +1,1 @@
-// typical card is 2.5" x 3.5" (64x89mm)
-const double playingCardAspectRatio = 64.0 / 89.0;
+const double playingCardAspectRatio = 62.0 / 87.0;
