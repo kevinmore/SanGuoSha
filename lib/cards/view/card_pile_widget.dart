@@ -9,25 +9,27 @@ class CardPileWidget extends StatelessWidget {
     Key? key,
     required this.cards,
     this.isFacingDown = false,
-    this.height = kDefaultCardPileHeight,
-    this.width,
+    this.cardHeight = kDefaultCardPileHeight,
+    this.cardOverlapping = kDefaultCardPileOverlapping,
     this.debugMode = false
   }) : super(key: key);
 
   final List<PlayingCard> cards;
   final bool isFacingDown;
-  final double? width;
-  final double height;
+  final double cardHeight;
+  final double cardOverlapping;
   final bool debugMode;
 
   @override
   Widget build(BuildContext context) {
+    double containerHeight = cardHeight + cards.length * cardOverlapping;
+    double containerWidth = containerHeight * kCardAspectRatio;
     return Container(
       decoration: debugMode ? BoxDecoration(
           border: Border.all(color: Colors.blueAccent)
       ) : null,
-      height: height,
-      width: width ?? height * kCardAspectRatio,
+      height: containerHeight,
+      width:  containerWidth,
       child: Stack(
         clipBehavior: Clip.none,
         children: List.generate(cards.length, (index) {
@@ -36,6 +38,7 @@ class CardPileWidget extends StatelessWidget {
             alignment: FractionalOffset(k, 1.0 - k),
             child: PlayingCardWidget(
               card: cards[index],
+              height: cardHeight,
               isFacingDown: isFacingDown,
             ),
           );
