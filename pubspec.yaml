@@ -65,7 +65,9 @@ flutter:
    - assets/card_images/deck/
    - assets/card_images/roles/
    - assets/images/
+   - assets/images/backgrounds/
    - assets/images/health/
+   - assets/images/characters/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
