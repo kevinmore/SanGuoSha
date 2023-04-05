@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../model/playing_card.dart';
-import '../util/card_aspect_ratio.dart';
+import '../util/card_measurements.dart';
 import 'playing_card_widget.dart';
 
 class CardPileWidget extends StatelessWidget {
@@ -9,7 +9,7 @@ class CardPileWidget extends StatelessWidget {
     Key? key,
     required this.cards,
     this.isFacingDown = false,
-    this.height = 420,
+    this.height = kDefaultCardPileHeight,
     this.width,
     this.debugMode = false
   }) : super(key: key);
@@ -27,8 +27,9 @@ class CardPileWidget extends StatelessWidget {
           border: Border.all(color: Colors.blueAccent)
       ) : null,
       height: height,
-      width: width ?? height * playingCardAspectRatio,
+      width: width ?? height * kCardAspectRatio,
       child: Stack(
+        clipBehavior: Clip.none,
         children: List.generate(cards.length, (index) {
           double k =  index / (cards.length - 1);
           return Align(

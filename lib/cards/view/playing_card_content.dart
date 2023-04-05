@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:san_guo_sha/cards/model/card_value.dart';
 import 'package:san_guo_sha/cards/util/get_good_font_size.dart';
 import '../model/playing_card.dart';
-import '../util/card_aspect_ratio.dart';
+import '../util/card_measurements.dart';
 import 'card_images_mapping.dart';
 import 'card_texts_mapping.dart';
 
@@ -46,10 +46,10 @@ class PlayingCardContent extends StatelessWidget {
           builder: (context, constraints) {
             double width = constraints.hasBoundedWidth
                 ? constraints.maxWidth
-                : constraints.maxHeight * playingCardAspectRatio;
+                : constraints.maxHeight * kCardAspectRatio;
             double height = constraints.hasBoundedHeight
                 ? constraints.maxHeight
-                : constraints.maxWidth / playingCardAspectRatio;
+                : constraints.maxWidth / kCardAspectRatio;
 
             // these magic numbers are based on measurements
             // taken from a few decks of standard decks of cards.

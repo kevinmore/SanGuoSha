@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../util/card_measurements.dart';
 import '../model/playing_card.dart';
 import 'playing_card_widget.dart';
 
@@ -8,10 +9,12 @@ class FlatCardFanWidget extends StatefulWidget {
     Key? key,
     required this.cards,
     this.isSelectable = true,
+    this.cardHeight = kDefaultCardHeight,
   }) : super(key: key);
 
   final List<PlayingCard> cards;
   final bool isSelectable;
+  final double cardHeight;
 
   @override
   State<FlatCardFanWidget> createState() => _FlatCardFanWidgetState();
@@ -35,6 +38,7 @@ class _FlatCardFanWidgetState extends State<FlatCardFanWidget> {
   PlayingCardWidget _createCardWidget(PlayingCard card) {
     return PlayingCardWidget(
       card: card,
+      height: widget.cardHeight,
       isSelectable: widget.isSelectable,
       onMouseEnter: _onSelectCard,
       onMouseExit: _onUnselectCard,
@@ -66,16 +70,7 @@ class _FlatCardFanWidgetState extends State<FlatCardFanWidget> {
         List<Widget> cardWidgetsList = [];
 
         const animationDuration = Duration(milliseconds: 150);
-
-        // create the first card to get some base measurements
-        var firstCard = _createCardWidget(widget.cards.first);
-        cardWidgetsList.add(AnimatedAlign(
-          duration: animationDuration,
-          alignment: const FractionalOffset(0, 0.5),
-          child: firstCard,
-        ));
-
-        double cardWidth = firstCard.cardWidth;
+        double cardWidth = widget.cardHeight * kCardAspectRatio;
         bool isOverlapping = cardWidth * widget.cards.length > maxWidth;
 
         // if there won't be any overlapping, we do nothing
@@ -90,7 +85,7 @@ class _FlatCardFanWidgetState extends State<FlatCardFanWidget> {
 
         // if there is overlapping, we separate the cards into 2 parts, divided by the current selected card
         // left part
-        for (int i = 1; i <= selectedIndex; ++i) {
+        for (int i = 0; i <= selectedIndex; ++i) {
           var cardWidget = _createCardWidget(widget.cards[i]);
           cardWidgetsList.add(AnimatedAlign(
             duration: animationDuration,

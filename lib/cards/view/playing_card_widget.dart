@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../model/playing_card.dart';
-import '../util/card_aspect_ratio.dart';
+import '../util/card_measurements.dart';
 import 'playing_card_content.dart';
 
 class PlayingCardWidget extends StatefulWidget {
@@ -18,14 +18,14 @@ class PlayingCardWidget extends StatefulWidget {
     required this.card,
     this.isFacingDown = false,
     this.isSelectable = false,
-    this.height = 400,
+    this.height = kDefaultCardHeight,
     this.elevation,
     this.onMouseEnter,
     this.onMouseExit,
   }) : super(key: key);
 
   double get cardHeight => height;
-  double get cardWidth => height * playingCardAspectRatio;
+  double get cardWidth => height * kCardAspectRatio;
 
   @override
   State<PlayingCardWidget> createState() => _PlayingCardWidgetState();
@@ -53,8 +53,8 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
         side: _isHovered
             ? const BorderSide(color: Colors.blue, width: 3)
             : const BorderSide(),
-        // 8.0 radius is good for the default 400.0 height
-        borderRadius: BorderRadius.circular(8.0 / 400.0 * widget.height),
+        // 8.0 radius is good for the default height
+        borderRadius: BorderRadius.circular(8.0 / kDefaultCardHeight * widget.height),
       ),
       clipBehavior: Clip.antiAlias,
       child: _cardContent,
@@ -66,7 +66,7 @@ class _PlayingCardWidgetState extends State<PlayingCardWidget> {
     final cardWidget = createCard();
     return SizedBox(
       height: widget.height,
-      width: widget.height * playingCardAspectRatio,
+      width: widget.height * kCardAspectRatio,
       child: widget.isSelectable
           ? MouseRegion(
               cursor: SystemMouseCursors.click,
