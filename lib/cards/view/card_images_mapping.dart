@@ -11,30 +11,24 @@ Map<CharacterCardValue, String> characterCardImageMap = {
   // qun
   CharacterCardValue.huaTuo: "assets/card_images/characters/QUN_001_华佗.png",
   CharacterCardValue.lvBu: "assets/card_images/characters/QUN_002_吕布.png",
-  CharacterCardValue.diaoChan:
-      "assets/card_images/characters/QUN_003_貂蝉.png",
+  CharacterCardValue.diaoChan: "assets/card_images/characters/QUN_003_貂蝉.png",
 
   // shu
   CharacterCardValue.liuBei: "assets/card_images/characters/SHU_001_刘备.png",
   CharacterCardValue.guanYu: "assets/card_images/characters/SHU_002_关羽.png",
-  CharacterCardValue.zhangFei:
-      "assets/card_images/characters/SHU_003_张飞.png",
+  CharacterCardValue.zhangFei: "assets/card_images/characters/SHU_003_张飞.png",
   CharacterCardValue.zhugeLiang:
       "assets/card_images/characters/SHU_004_诸葛亮.png",
-  CharacterCardValue.zhaoYun:
-      "assets/card_images/characters/SHU_005_赵云.png",
+  CharacterCardValue.zhaoYun: "assets/card_images/characters/SHU_005_赵云.png",
   CharacterCardValue.maChao: "assets/card_images/characters/SHU_006_马超.png",
   CharacterCardValue.huangYueying:
       "assets/card_images/characters/SHU_007_黄月英.png",
 
   // wei
   CharacterCardValue.caoCao: "assets/card_images/characters/WEI_001_曹操.png",
-  CharacterCardValue.simaYi:
-      "assets/card_images/characters/WEI_002_司马懿.png",
-  CharacterCardValue.xiahouDun:
-      "assets/card_images/characters/WEI_003_夏侯惇.png",
-  CharacterCardValue.zhangLiao:
-      "assets/card_images/characters/WEI_004_张辽.png",
+  CharacterCardValue.simaYi: "assets/card_images/characters/WEI_002_司马懿.png",
+  CharacterCardValue.xiahouDun: "assets/card_images/characters/WEI_003_夏侯惇.png",
+  CharacterCardValue.zhangLiao: "assets/card_images/characters/WEI_004_张辽.png",
   CharacterCardValue.xuChu: "assets/card_images/characters/WEI_005_许诸.png",
   CharacterCardValue.guoJia: "assets/card_images/characters/WEI_006_郭嘉.png",
   CharacterCardValue.zhenJi: "assets/card_images/characters/WEI_007_甄姬.png",
