@@ -37,3 +37,38 @@ Map<CharacterCardValue, String> characterImageMap = {
   CharacterCardValue.sunShangXiang:
       "assets/images/characters/标准版/孙尚香/孙尚香-经典形象.png",
 };
+
+Map<CharacterCardValue, int> characterHealthMap = {
+  // qun
+  CharacterCardValue.huaTuo: 3,
+  CharacterCardValue.lvBu: 4,
+  CharacterCardValue.diaoChan: 3,
+
+  // shu
+  CharacterCardValue.liuBei: 4,
+  CharacterCardValue.guanYu: 4,
+  CharacterCardValue.zhangFei: 4,
+  CharacterCardValue.zhugeLiang: 3,
+  CharacterCardValue.zhaoYun: 4,
+  CharacterCardValue.maChao: 4,
+  CharacterCardValue.huangYueying: 3,
+
+  // wei
+  CharacterCardValue.caoCao: 4,
+  CharacterCardValue.simaYi: 3,
+  CharacterCardValue.xiahouDun: 4,
+  CharacterCardValue.zhangLiao: 4,
+  CharacterCardValue.xuChu: 4,
+  CharacterCardValue.guoJia: 3,
+  CharacterCardValue.zhenJi: 3,
+
+  // wu
+  CharacterCardValue.sunQuan: 4,
+  CharacterCardValue.ganNing: 4,
+  CharacterCardValue.lvMeng: 4,
+  CharacterCardValue.huangGai: 4,
+  CharacterCardValue.zhouYu: 3,
+  CharacterCardValue.daQiao: 3,
+  CharacterCardValue.luXun: 3,
+  CharacterCardValue.sunShangXiang: 3,
+};
