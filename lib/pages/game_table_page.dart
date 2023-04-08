@@ -32,30 +32,40 @@ class GameTablePage extends StatelessWidget {
         role: RoleCardValue.zhongChen,
         character: CharacterCardValue.diaoChan,
         health: 3,
+        handCards: 5,
       ),
       PlayerAvatarWidget(
           role: RoleCardValue.zhongChen,
           character: CharacterCardValue.guanYu,
+          showRole: true,
+          handCards: 2,
           health: 3),
       PlayerAvatarWidget(
           role: RoleCardValue.zhongChen,
           character: CharacterCardValue.zhangFei,
+          handCards: 1,
           health: 3),
       PlayerAvatarWidget(
           role: RoleCardValue.fanZei,
           character: CharacterCardValue.guoJia,
+          handCards: 0,
           health: 3),
       PlayerAvatarWidget(
           role: RoleCardValue.fanZei,
           character: CharacterCardValue.huangGai,
+          showRole: true,
+          handCards: 1,
           health: 3),
       PlayerAvatarWidget(
           role: RoleCardValue.fanZei,
           character: CharacterCardValue.huaTuo,
+          handCards: 4,
           health: 3),
       PlayerAvatarWidget(
           role: RoleCardValue.neiJian,
           character: CharacterCardValue.zhenJi,
+          showRole: true,
+          handCards: 2,
           health: 3),
     ];
 
@@ -69,57 +79,59 @@ class GameTablePage extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // opponents
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // opponents
+                SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: opponents,
                   ),
                 ),
-              ),
 
-              //deck cards
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CardPileWidget(
-                      cards: deckACardsList(),
-                      cardHeight: cardHeight,
-                      cardOverlapping: screenHeight * 0.0003,
-                      isFacingDown: true,
-                      // debugMode: true,
-                    ),
-                    CardPileWidget(
-                      cards: deckBCardsList(),
-                      cardHeight: cardHeight,
-                      cardOverlapping: screenHeight * 0.0003,
-                      // debugMode: true,
-                    ),
-                  ],
+                //deck cards
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CardPileWidget(
+                        cards: deckACardsList(),
+                        cardHeight: cardHeight,
+                        cardOverlapping: screenHeight * 0.0003,
+                        isFacingDown: true,
+                        // debugMode: true,
+                      ),
+                      CardPileWidget(
+                        cards: deckBCardsList(),
+                        cardHeight: cardHeight,
+                        cardOverlapping: screenHeight * 0.0003,
+                        // debugMode: true,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
 
-              // player
-              Row(
-                children: [
-                  PlayerAvatarWidget(
-                      role: RoleCardValue.zhuGong,
-                      character: CharacterCardValue.liuBei,
-                      health: 4),
-                  // SizedBox(
-                  //     width: MediaQuery.of(context).size.width - cardHeight * kCardAspectRatio * 1.2,
-                  //     child: FlatCardFanWidget(cards: handCards, cardHeight: cardHeight,)),
-                ],
-              )
-            ],
+                // player
+                Row(
+                  children: [
+                    PlayerAvatarWidget(
+                        role: RoleCardValue.zhuGong,
+                        character: CharacterCardValue.liuBei,
+                        handCards: 6,
+                        showRole: true,
+                        health: 4),
+                    // SizedBox(
+                    //     width: MediaQuery.of(context).size.width - cardHeight * kCardAspectRatio * 1.2,
+                    //     child: FlatCardFanWidget(cards: handCards, cardHeight: cardHeight,)),
+                  ],
+                )
+              ],
+            ),
           )),
     );
   }

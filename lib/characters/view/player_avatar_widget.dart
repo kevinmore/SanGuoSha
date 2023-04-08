@@ -10,22 +10,25 @@ class PlayerAvatarWidget extends StatelessWidget {
     required this.role,
     required this.character,
     required this.health,
+    required this.handCards,
     this.height = kDefaultCardHeight,
-    this.showRole = true,
+    this.showRole = false,
   }) : super(key: key);
 
   final RoleCardValue role;
   final CharacterCardValue character;
   final int health;
+  final int handCards;
   final double height;
   final bool showRole;
 
   Widget _buildBackgroundWidget(BuildContext context) {
     return Stack(
       children: [
+        // background
         SizedBox(
           height: height,
-          width: height * kCharacterImageAspectRatio + 40,
+          width: height * kCharacterImageAspectRatio + 32,
           child: Card(
             color: Colors.grey.shade800,
             shape: RoundedRectangleBorder(
@@ -33,6 +36,7 @@ class PlayerAvatarWidget extends StatelessWidget {
             ),
           ),
         ),
+
         // clan
         Positioned(
           top: 10,
@@ -46,6 +50,7 @@ class PlayerAvatarWidget extends StatelessWidget {
             ),
           ),
         ),
+
         // name
         Positioned(
           top: 55,
@@ -64,6 +69,31 @@ class PlayerAvatarWidget extends StatelessWidget {
                       ))
                   .toList()),
         ),
+
+        // hand card
+        Positioned(
+          left: 10,
+          bottom: 12,
+          child: Column(
+            children: [
+              SizedBox(
+                width: 32,
+                child: ColorFiltered(
+                    colorFilter:
+                        const ColorFilter.mode(Colors.white, BlendMode.srcATop),
+                    child: Image.asset("assets/images/cards.png")),
+              ),
+              // Icon(FontAwesomeIcons.car, size: 24, color: Colors.white,),
+              Text(
+                handCards.toString(),
+                style: TextStyle(
+                  fontSize: 28,
+                  color: Colors.grey.shade50,
+                ),
+              )
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -74,18 +104,15 @@ class PlayerAvatarWidget extends StatelessWidget {
       children: [
         SizedBox(
           height: height,
-          child: AspectRatio(
-            aspectRatio: kCharacterImageAspectRatio,
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.0),
-                side: BorderSide(color: Colors.grey.shade800, width: 2),
-              ),
-              clipBehavior: Clip.antiAlias,
-              child: Image.asset(
-                characterImageMap[character]!,
-                fit: BoxFit.fill,
-              ),
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+              side: BorderSide(color: Colors.grey.shade800, width: 2),
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: Image.asset(
+              characterImageMap[character]!,
+              fit: BoxFit.fill,
             ),
           ),
         ),
