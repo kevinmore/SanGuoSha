@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
 import 'package:san_guo_sha/cards/model/card_value.dart';
 import 'package:san_guo_sha/cards/util/card_measurements.dart';
 import 'package:san_guo_sha/characters/model/character_data_mapping.dart';
@@ -68,6 +70,36 @@ class PlayerAvatarWidget extends StatelessWidget {
                         ),
                       ))
                   .toList()),
+        ),
+
+        // health
+        Positioned(
+          bottom: 80,
+          left: 12,
+          child: RotatedBox(
+            quarterTurns: 2,
+            child: RatingBar.builder(
+              direction: Axis.vertical,
+              itemSize: 24,
+              ignoreGestures: true,
+              initialRating: health.toDouble(),
+              itemCount: role == RoleCardValue.zhuGong ? characterHealthMap[character]! + 1 : characterHealthMap[character]!,
+              itemBuilder: (context, index) {
+                if (health < 2) {
+                  return Image.asset("assets/images/health/1.png");
+                } else if (health == 2) {
+                  return Image.asset("assets/images/health/2.png");
+                } else if (health == 3) {
+                  return Image.asset("assets/images/health/3.png");
+                } else if (health == 4) {
+                  return Image.asset("assets/images/health/4.png");
+                } else {
+                  return Image.asset("assets/images/health/5.png");
+                }
+              },
+              onRatingUpdate: (value) {},
+            ),
+          ),
         ),
 
         // hand card

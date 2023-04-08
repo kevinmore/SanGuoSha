@@ -31,7 +31,7 @@ class GameTablePage extends StatelessWidget {
       PlayerAvatarWidget(
         role: RoleCardValue.zhongChen,
         character: CharacterCardValue.diaoChan,
-        health: 3,
+        health: 1,
         handCards: 5,
       ),
       PlayerAvatarWidget(
@@ -39,23 +39,23 @@ class GameTablePage extends StatelessWidget {
           character: CharacterCardValue.guanYu,
           showRole: true,
           handCards: 2,
-          health: 3),
+          health: 2),
       PlayerAvatarWidget(
           role: RoleCardValue.zhongChen,
           character: CharacterCardValue.zhangFei,
           handCards: 1,
-          health: 3),
+          health: 4),
       PlayerAvatarWidget(
           role: RoleCardValue.fanZei,
           character: CharacterCardValue.guoJia,
           handCards: 0,
-          health: 3),
+          health: 2),
       PlayerAvatarWidget(
           role: RoleCardValue.fanZei,
           character: CharacterCardValue.huangGai,
           showRole: true,
           handCards: 1,
-          health: 3),
+          health: 0),
       PlayerAvatarWidget(
           role: RoleCardValue.fanZei,
           character: CharacterCardValue.huaTuo,
@@ -87,6 +87,7 @@ class GameTablePage extends StatelessWidget {
                 // opponents
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: opponents,
@@ -124,7 +125,7 @@ class GameTablePage extends StatelessWidget {
                         character: CharacterCardValue.liuBei,
                         handCards: 6,
                         showRole: true,
-                        health: 4),
+                        health: 5),
                     // SizedBox(
                     //     width: MediaQuery.of(context).size.width - cardHeight * kCardAspectRatio * 1.2,
                     //     child: FlatCardFanWidget(cards: handCards, cardHeight: cardHeight,)),
