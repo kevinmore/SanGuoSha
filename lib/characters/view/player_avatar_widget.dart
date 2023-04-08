@@ -131,45 +131,49 @@ class PlayerAvatarWidget extends StatelessWidget {
   }
 
   Widget _buildCharacterWidget() {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        SizedBox(
-          height: height,
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0),
-              side: BorderSide(color: Colors.grey.shade800, width: 2),
-            ),
-            clipBehavior: Clip.antiAlias,
-            child: Image.asset(
-              characterImageMap[character]!,
-              fit: BoxFit.fill,
+    return Tooltip(
+      message: characterSkillDescriptionMap[character],
+      textStyle: const TextStyle(fontSize: 24, color: Colors.white),
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          SizedBox(
+            height: height,
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.0),
+                side: BorderSide(color: Colors.grey.shade800, width: 2),
+              ),
+              clipBehavior: Clip.antiAlias,
+              child: Image.asset(
+                characterImageMap[character]!,
+                fit: BoxFit.fill,
+              ),
             ),
           ),
-        ),
-        Positioned(
-            top: -10,
-            right: -10,
-            child: Container(
-              width: 64,
-              height: 64,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.grey.shade300,
-              ),
-              child: Center(
-                child: Text(
-                  showRole ? roleDisplayNameMap[role]! : "?",
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: showRole ? roleColorMap[role] : Colors.black,
+          Positioned(
+              top: -10,
+              right: -10,
+              child: Container(
+                width: 64,
+                height: 64,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.grey.shade300,
+                ),
+                child: Center(
+                  child: Text(
+                    showRole ? roleDisplayNameMap[role]! : "?",
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: showRole ? roleColorMap[role] : Colors.black,
+                    ),
                   ),
                 ),
-              ),
-            )),
-      ],
+              )),
+        ],
+      ),
     );
   }
 
