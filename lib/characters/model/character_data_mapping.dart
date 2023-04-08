@@ -1,4 +1,97 @@
+import 'package:flutter/material.dart';
+
 import 'package:san_guo_sha/cards/model/card_value.dart';
+
+Map<CharacterCardValue, String> characterDisplayNameMap = {
+  // qun
+  CharacterCardValue.huaTuo: "华佗",
+  CharacterCardValue.lvBu: "吕布",
+  CharacterCardValue.diaoChan: "貂蝉",
+
+  // shu
+  CharacterCardValue.liuBei: "刘备",
+  CharacterCardValue.guanYu: "关羽",
+  CharacterCardValue.zhangFei: "张飞",
+  CharacterCardValue.zhugeLiang: "诸葛亮",
+  CharacterCardValue.zhaoYun: "赵云",
+  CharacterCardValue.maChao: "马超",
+  CharacterCardValue.huangYueying: "黄月英",
+
+  // wei
+  CharacterCardValue.caoCao: "曹操",
+  CharacterCardValue.simaYi: "司马懿",
+  CharacterCardValue.xiahouDun: "夏侯惇",
+  CharacterCardValue.zhangLiao: "张辽",
+  CharacterCardValue.xuChu: "许褚",
+  CharacterCardValue.guoJia: "郭嘉",
+  CharacterCardValue.zhenJi: "甄姬",
+
+  // wu
+  CharacterCardValue.sunQuan: "孙权",
+  CharacterCardValue.ganNing: "甘宁",
+  CharacterCardValue.lvMeng: "吕蒙",
+  CharacterCardValue.huangGai: "黄盖",
+  CharacterCardValue.zhouYu: "周瑜",
+  CharacterCardValue.daQiao: "大乔",
+  CharacterCardValue.luXun: "陆逊",
+  CharacterCardValue.sunShangXiang: "孙尚香",
+};
+
+Map<CharacterCardValue, String> characterClanMap = {
+  // qun
+  CharacterCardValue.huaTuo: "群",
+  CharacterCardValue.lvBu: "群",
+  CharacterCardValue.diaoChan: "群",
+
+  // shu
+  CharacterCardValue.liuBei: "蜀",
+  CharacterCardValue.guanYu: "蜀",
+  CharacterCardValue.zhangFei: "蜀",
+  CharacterCardValue.zhugeLiang: "蜀",
+  CharacterCardValue.zhaoYun: "蜀",
+  CharacterCardValue.maChao: "蜀",
+  CharacterCardValue.huangYueying: "蜀",
+
+  // wei
+  CharacterCardValue.caoCao: "魏",
+  CharacterCardValue.simaYi: "魏",
+  CharacterCardValue.xiahouDun: "魏",
+  CharacterCardValue.zhangLiao: "魏",
+  CharacterCardValue.xuChu: "魏",
+  CharacterCardValue.guoJia: "魏",
+  CharacterCardValue.zhenJi: "魏",
+
+  // wu
+  CharacterCardValue.sunQuan: "吴",
+  CharacterCardValue.ganNing: "吴",
+  CharacterCardValue.lvMeng: "吴",
+  CharacterCardValue.huangGai: "吴",
+  CharacterCardValue.zhouYu: "吴",
+  CharacterCardValue.daQiao: "吴",
+  CharacterCardValue.luXun: "吴",
+  CharacterCardValue.sunShangXiang: "吴",
+};
+
+Map<String, Color> clanColorMap = {
+  "群": Colors.grey,
+  "蜀": Colors.redAccent,
+  "魏": Colors.blueAccent,
+  "吴": Colors.greenAccent,
+};
+
+Map<RoleCardValue, String> roleDisplayNameMap = {
+  RoleCardValue.zhuGong: "主",
+  RoleCardValue.zhongChen: "忠",
+  RoleCardValue.fanZei: "反",
+  RoleCardValue.neiJian: "内",
+};
+
+Map<RoleCardValue, Color> roleColorMap = {
+  RoleCardValue.zhuGong: Colors.red.shade600,
+  RoleCardValue.zhongChen: Colors.orange.shade600,
+  RoleCardValue.fanZei: Colors.green,
+  RoleCardValue.neiJian: Colors.blue,
+};
 
 Map<CharacterCardValue, String> characterImageMap = {
   // qun
