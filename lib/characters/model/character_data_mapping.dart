@@ -202,7 +202,7 @@ Map<CharacterCardValue, String> characterSkillDescriptionMap = {
   // qun
   CharacterCardValue.huaTuo:
       "【急救】你的回合外，你可以将一张红色牌当【桃】使用。\n\n【青囊】出牌阶段限一次，你可以弃置一张手牌，然后令一名已受伤的角色回复1点体力。",
-  CharacterCardValue.lvBu: "锁定技，你的【杀】需要两张【闪】才能抵消；与你【决斗】的角色每次需要打出两张【杀】。",
+  CharacterCardValue.lvBu: "【无双】锁定技，你的【杀】需要两张【闪】才能抵消；与你【决斗】的角色每次需要打出两张【杀】。",
   CharacterCardValue.diaoChan:
       "【离间】出牌阶段限一次，你可以弃置一张牌，然后令一名男性角色视为对另一名男性角色使用一张【决斗】。\n\n【闭月】结束阶段，你可以摸一张牌。",
 
@@ -212,7 +212,7 @@ Map<CharacterCardValue, String> characterSkillDescriptionMap = {
   CharacterCardValue.guanYu: "【武圣】你可以将一张红色牌当【杀】使用或打出。",
   CharacterCardValue.zhangFei: "【咆哮】锁定技，你使用【杀】无次数限制。",
   CharacterCardValue.zhugeLiang:
-      "【观星】准备阶段，你可以观看牌堆顶的X张牌（X为全场角色数且最多为5），然后以任意顺序分配于牌堆顶或牌堆底。\n\n【空城】锁定技，若你没有手牌，则你不能成为【杀】或【决斗】的目标。",
+      "【观星】准备阶段，你可以观看牌堆顶的X张牌（X为全场存活角色数且最多为5），然后以任意顺序分配于牌堆顶或牌堆底。\n\n【空城】锁定技，若你没有手牌，则你不能成为【杀】或【决斗】的目标。",
   CharacterCardValue.zhaoYun: "【龙胆】你可以将【杀】当【闪】、【闪】当【杀】使用或打出。",
   CharacterCardValue.maChao:
       "【马术】	锁定技，你计算与其他角色的距离-1。\n\n【铁骑】你的【杀】指定目标后，你可以进行判定，若结果为红色，该角色不能使用【闪】",
@@ -240,7 +240,7 @@ Map<CharacterCardValue, String> characterSkillDescriptionMap = {
   CharacterCardValue.lvMeng: "【克己】若你未于出牌阶段内使用或打出过【杀】，则你可以跳过弃牌阶段。",
   CharacterCardValue.huangGai: "【苦肉】出牌阶段，你可以失去1点体力，然后摸两张牌。",
   CharacterCardValue.zhouYu:
-      "【英姿】摸牌阶段，你可以多摸一张牌。\n\n【反间】出牌阶段限一次，你可以令一名其他角色猜一种花色，然后获得你的一张手牌并展示之，如果猜错花色，该角色受到1点伤害。",
+      "【英姿】摸牌阶段，你可以多摸一张牌。\n\n【反间】出牌阶段限一次，你可以令一名其他角色猜一种花色，然后获得你的一张手牌并展示之，如果猜错花色，该角色受到1点伤害。不论结果，该角色都获得此牌",
   CharacterCardValue.daQiao:
       "【国色】你可以将一张♦牌当【乐不思蜀】使用。\n\n【流离】当你成为【杀】的目标时，你可以弃置一张牌并将此【杀】转移给你攻击范围内的一名其他角色（不能是使用此【杀】的角色）。",
   CharacterCardValue.luXun:
