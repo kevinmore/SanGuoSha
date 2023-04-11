@@ -29,47 +29,52 @@ class GameTablePage extends StatelessWidget {
 
     List<Widget> opponents = [
       PlayerAvatarWidget(
+        height: cardHeight,
         role: RoleCardValue.zhongChen,
         character: CharacterCardValue.diaoChan,
         health: 1,
         handCards: 5,
       ),
       PlayerAvatarWidget(
+          height: cardHeight,
           role: RoleCardValue.zhongChen,
           character: CharacterCardValue.guanYu,
           showRole: true,
           handCards: 2,
           health: 2),
       PlayerAvatarWidget(
+          height: cardHeight,
           role: RoleCardValue.zhongChen,
           character: CharacterCardValue.zhangFei,
           handCards: 1,
           health: 4),
       PlayerAvatarWidget(
+          height: cardHeight,
           role: RoleCardValue.fanZei,
           character: CharacterCardValue.guoJia,
           handCards: 0,
           health: 2),
       PlayerAvatarWidget(
+          height: cardHeight,
           role: RoleCardValue.fanZei,
           character: CharacterCardValue.huangGai,
           showRole: true,
           handCards: 1,
           health: 0),
       PlayerAvatarWidget(
+          height: cardHeight,
           role: RoleCardValue.fanZei,
           character: CharacterCardValue.huaTuo,
           handCards: 4,
           health: 3),
       PlayerAvatarWidget(
+          height: cardHeight,
           role: RoleCardValue.neiJian,
           character: CharacterCardValue.zhenJi,
           showRole: true,
           handCards: 2,
           health: 3),
     ];
-
-
 
     return Scaffold(
       body: Container(
@@ -121,14 +126,19 @@ class GameTablePage extends StatelessWidget {
                 Row(
                   children: [
                     PlayerAvatarWidget(
+                        height: cardHeight,
                         role: RoleCardValue.zhuGong,
                         character: CharacterCardValue.liuBei,
                         handCards: 6,
                         showRole: true,
                         health: 5),
-                    // SizedBox(
-                    //     width: MediaQuery.of(context).size.width - cardHeight * kCardAspectRatio * 1.2,
-                    //     child: FlatCardFanWidget(cards: handCards, cardHeight: cardHeight,)),
+                    SizedBox(
+                        width: MediaQuery.of(context).size.width -
+                            cardHeight * kCardAspectRatio * 1.2,
+                        child: FlatCardFanWidget(
+                          cards: handCards,
+                          cardHeight: cardHeight,
+                        )),
                   ],
                 )
               ],
