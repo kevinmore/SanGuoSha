@@ -16,6 +16,7 @@ class PlayerAvatarWidget extends StatelessWidget {
     required this.handCards,
     this.height = kDefaultCardHeight,
     this.showRole = false,
+    this.isMyTurn = false,
   }) : super(key: key);
 
   final RoleCardValue role;
@@ -24,6 +25,7 @@ class PlayerAvatarWidget extends StatelessWidget {
   final int handCards;
   final double height;
   final bool showRole;
+  final bool isMyTurn;
 
   Widget _buildBackgroundWidget(BuildContext context) {
     // the following measurements are based on kDefaultCardHeight = 360
@@ -39,7 +41,7 @@ class PlayerAvatarWidget extends StatelessWidget {
           child: GlowCard(
               glowColor: Colors.green,
               cardColor: Colors.grey.shade800,
-              isGlowing: true),
+              isGlowing: isMyTurn),
         ),
 
         // clan
@@ -140,9 +142,10 @@ class PlayerAvatarWidget extends StatelessWidget {
       message: characterSkillDescriptionMap[character],
       textStyle: const TextStyle(fontSize: 24, color: Colors.white),
       child: Stack(
+        alignment: Alignment.center,
         clipBehavior: Clip.none,
         children: [
-          // image
+          // avatar
           SizedBox(
             height: height,
             child: Card(
@@ -151,35 +154,44 @@ class PlayerAvatarWidget extends StatelessWidget {
                 side: BorderSide(color: Colors.grey.shade800, width: 2),
               ),
               clipBehavior: Clip.antiAlias,
-              child: Image.asset(
-                characterImageMap[character]!,
-                fit: BoxFit.fill,
+              child: ColorFiltered(
+                colorFilter: health <= 0
+                    ? ColorFilter.mode(Colors.grey, BlendMode.saturation)
+                    : ColorFilter.mode(Colors.white, BlendMode.multiply),
+                child: Image.asset(
+                  characterImageMap[character]!,
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
           ),
 
           // role
           Positioned(
-              top: -10 * height / kDefaultCardHeight,
-              right: -10 * height / kDefaultCardHeight,
-              child: Container(
-                width: 64 * height / kDefaultCardHeight,
-                height: 64 * height / kDefaultCardHeight,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey.shade300,
-                ),
-                child: Center(
-                  child: Text(
-                    showRole ? roleDisplayNameMap[role]! : "?",
-                    style: TextStyle(
-                      fontSize: 40 * height / kDefaultCardHeight,
-                      fontWeight: FontWeight.bold,
-                      color: showRole ? roleColorMap[role] : Colors.black,
-                    ),
+            top: -10 * height / kDefaultCardHeight,
+            right: -10 * height / kDefaultCardHeight,
+            child: Container(
+              width: 64 * height / kDefaultCardHeight,
+              height: 64 * height / kDefaultCardHeight,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.grey.shade300,
+              ),
+              child: Center(
+                child: Text(
+                  showRole ? roleDisplayNameMap[role]! : "?",
+                  style: TextStyle(
+                    fontSize: 40 * height / kDefaultCardHeight,
+                    fontWeight: FontWeight.bold,
+                    color: showRole ? roleColorMap[role] : Colors.black,
                   ),
                 ),
-              )),
+              ),
+            ),
+          ),
+
+          // dead overlay
+          if (health <= 0) Image.asset("assets/images/dead.png", height: height/2.5),
         ],
       ),
     );

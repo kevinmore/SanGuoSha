@@ -52,6 +52,7 @@ class GameTablePage extends StatelessWidget {
           height: opponentWidgetHeight,
           role: RoleCardValue.zhongChen,
           character: CharacterCardValue.zhangFei,
+          isMyTurn: true,
           handCards: 1,
           health: 4),
       PlayerAvatarWidget(
