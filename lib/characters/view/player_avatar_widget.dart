@@ -5,6 +5,7 @@ import 'package:san_guo_sha/cards/model/card_value.dart';
 import 'package:san_guo_sha/cards/util/card_measurements.dart';
 import 'package:san_guo_sha/characters/model/character_data_mapping.dart';
 import 'package:san_guo_sha/characters/util/character_measurements.dart';
+import 'glow_card.dart';
 
 class PlayerAvatarWidget extends StatelessWidget {
   const PlayerAvatarWidget({
@@ -35,12 +36,10 @@ class PlayerAvatarWidget extends StatelessWidget {
           height: height,
           width: height * kCharacterImageAspectRatio +
               32 * height / kDefaultCardHeight,
-          child: Card(
-            color: Colors.grey.shade800,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-          ),
+          child: GlowCard(
+              glowColor: Colors.green,
+              cardColor: Colors.grey.shade800,
+              isGlowing: true),
         ),
 
         // clan
