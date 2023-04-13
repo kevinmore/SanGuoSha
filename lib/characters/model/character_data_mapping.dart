@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:san_guo_sha/cards/model/card_value.dart';
+import 'character_skill.dart';
 
 Map<CharacterCardValue, String> characterDisplayNameMap = {
   // qun
@@ -198,6 +199,47 @@ Map<CharacterCardValue, int> characterSexMap = {
   CharacterCardValue.sunShangXiang: 0,
 };
 
+Map<CharacterCardValue, List<CharacterSkill>> characterSkillMap = {
+  // qun
+  CharacterCardValue.huaTuo: [CharacterSkill.jiJiu, CharacterSkill.qingNang],
+  CharacterCardValue.lvBu: [CharacterSkill.wuShuang],
+  CharacterCardValue.diaoChan: [CharacterSkill.liJian, CharacterSkill.Biyue],
+
+  // shu
+  CharacterCardValue.liuBei: [CharacterSkill.renDe, CharacterSkill.jiJiang],
+  CharacterCardValue.guanYu: [CharacterSkill.wuSheng],
+  CharacterCardValue.zhangFei: [CharacterSkill.paoXiao],
+  CharacterCardValue.zhugeLiang: [
+    CharacterSkill.guanXing,
+    CharacterSkill.kongCheng
+  ],
+  CharacterCardValue.zhaoYun: [CharacterSkill.longDan],
+  CharacterCardValue.maChao: [CharacterSkill.maShu, CharacterSkill.tieJi],
+  CharacterCardValue.huangYueying: [CharacterSkill.jiZhi, CharacterSkill.qiCai],
+
+  // wei
+  CharacterCardValue.caoCao: [CharacterSkill.jianXiong, CharacterSkill.huJia],
+  CharacterCardValue.simaYi: [CharacterSkill.fanKui, CharacterSkill.guiCai],
+  CharacterCardValue.xiahouDun: [CharacterSkill.gangLie],
+  CharacterCardValue.zhangLiao: [CharacterSkill.tuXi],
+  CharacterCardValue.xuChu: [CharacterSkill.luoYi],
+  CharacterCardValue.guoJia: [CharacterSkill.tianDu, CharacterSkill.yiJi],
+  CharacterCardValue.zhenJi: [CharacterSkill.qingGuo, CharacterSkill.luoShen],
+
+  // wu
+  CharacterCardValue.sunQuan: [CharacterSkill.zhiHeng, CharacterSkill.jiuYuan],
+  CharacterCardValue.ganNing: [CharacterSkill.qiXi],
+  CharacterCardValue.lvMeng: [CharacterSkill.keJi],
+  CharacterCardValue.huangGai: [CharacterSkill.kuRou],
+  CharacterCardValue.zhouYu: [CharacterSkill.yingZi, CharacterSkill.fanJian],
+  CharacterCardValue.daQiao: [CharacterSkill.guoSe, CharacterSkill.liuLi],
+  CharacterCardValue.luXun: [CharacterSkill.qianXun, CharacterSkill.lianYing],
+  CharacterCardValue.sunShangXiang: [
+    CharacterSkill.jieYin,
+    CharacterSkill.xiaoJi
+  ],
+};
+
 Map<CharacterCardValue, String> characterSkillDescriptionMap = {
   // qun
   CharacterCardValue.huaTuo:
@@ -215,7 +257,7 @@ Map<CharacterCardValue, String> characterSkillDescriptionMap = {
       "【观星】准备阶段，你可以观看牌堆顶的X张牌（X为全场存活角色数且最多为5），然后以任意顺序分配于牌堆顶或牌堆底。\n\n【空城】锁定技，若你没有手牌，则你不能成为【杀】或【决斗】的目标。",
   CharacterCardValue.zhaoYun: "【龙胆】你可以将【杀】当【闪】、【闪】当【杀】使用或打出。",
   CharacterCardValue.maChao:
-      "【马术】	锁定技，你计算与其他角色的距离-1。\n\n【铁骑】你的【杀】指定目标后，你可以进行判定，若结果为红色，该角色不能使用【闪】",
+      "【马术】锁定技，你计算与其他角色的距离-1。\n\n【铁骑】你的【杀】指定目标后，你可以进行判定，若结果为红色，该角色不能使用【闪】。",
   CharacterCardValue.huangYueying:
       "【集智】当你使用普通锦囊牌时，你可以摸一张牌。\n\n【奇才】锁定技，你使用锦囊牌无距离限制。",
 
@@ -240,7 +282,7 @@ Map<CharacterCardValue, String> characterSkillDescriptionMap = {
   CharacterCardValue.lvMeng: "【克己】若你未于出牌阶段内使用或打出过【杀】，则你可以跳过弃牌阶段。",
   CharacterCardValue.huangGai: "【苦肉】出牌阶段，你可以失去1点体力，然后摸两张牌。",
   CharacterCardValue.zhouYu:
-      "【英姿】摸牌阶段，你可以多摸一张牌。\n\n【反间】出牌阶段限一次，你可以令一名其他角色猜一种花色，然后获得你的一张手牌并展示之，如果猜错花色，该角色受到1点伤害。不论结果，该角色都获得此牌",
+      "【英姿】摸牌阶段，你可以多摸一张牌。\n\n【反间】出牌阶段限一次，你可以令一名其他角色猜一种花色，然后获得你的一张手牌并展示之，如果猜错花色，该角色受到1点伤害。不论结果，该角色都获得此牌。",
   CharacterCardValue.daQiao:
       "【国色】你可以将一张♦牌当【乐不思蜀】使用。\n\n【流离】当你成为【杀】的目标时，你可以弃置一张牌并将此【杀】转移给你攻击范围内的一名其他角色（不能是使用此【杀】的角色）。",
   CharacterCardValue.luXun:
