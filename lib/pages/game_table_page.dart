@@ -52,7 +52,7 @@ class GameTablePage extends StatelessWidget {
           height: opponentWidgetHeight,
           role: RoleCardValue.zhongChen,
           character: CharacterCardValue.zhangFei,
-          isMyTurn: true,
+          isActive: true,
           handCards: 1,
           health: 4),
       PlayerAvatarWidget(
@@ -127,6 +127,7 @@ class GameTablePage extends StatelessWidget {
 
                 // player
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     PlayerAvatarWidget(
                         height: cardHeight,
@@ -134,13 +135,15 @@ class GameTablePage extends StatelessWidget {
                         character: CharacterCardValue.liuBei,
                         handCards: 6,
                         showRole: true,
+                        isActive: true,
+                        isMe: true,
                         health: 5),
-                    // SizedBox(
-                    //     width: MediaQuery.of(context).size.width,
-                    //     child: FlatCardFanWidget(
-                    //       cards: handCards,
-                    //       cardHeight: cardHeight,
-                    //     )),
+                    SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        child: FlatCardFanWidget(
+                          cards: handCards,
+                          cardHeight: cardHeight,
+                        )),
                   ],
                 )
               ],

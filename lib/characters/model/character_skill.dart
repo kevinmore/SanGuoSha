@@ -280,7 +280,7 @@ Map<CharacterSkill, String> characterSkillNameMap = {
   CharacterSkill.xiaoJi: "枭姬",
 };
 
-Map<CharacterSkill, String> characterDescriptionMap = {
+Map<CharacterSkill, String> characterSkillDescriptionMap = {
   // huaTuo
   CharacterSkill.jiJiu: "你的回合外，你可以将一张红色牌当【桃】使用。",
   CharacterSkill.qingNang: "出牌阶段限一次，你可以弃置一张手牌，然后令一名已受伤的角色回复1点体力。",
