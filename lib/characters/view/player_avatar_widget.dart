@@ -142,8 +142,9 @@ class PlayerAvatarWidget extends StatelessWidget {
 
   Widget _buildCharacterWidget() {
     final skills = characterSkillMap[character]!;
-    String message = skills.map((skill) =>
-    "【${characterSkillNameMap[skill]}】${characterSkillDescriptionMap[skill]}")
+    String message = skills
+        .map((skill) =>
+            "【${characterSkillNameMap[skill]}】${characterSkillDescriptionMap[skill]}")
         .join("\n\n");
 
     return Tooltip(
@@ -165,8 +166,8 @@ class PlayerAvatarWidget extends StatelessWidget {
               clipBehavior: Clip.antiAlias,
               child: ColorFiltered(
                 colorFilter: health <= 0
-                    ? ColorFilter.mode(Colors.grey, BlendMode.saturation)
-                    : ColorFilter.mode(Colors.white, BlendMode.multiply),
+                    ? const ColorFilter.mode(Colors.grey, BlendMode.saturation)
+                    : const ColorFilter.mode(Colors.white, BlendMode.multiply),
                 child: Image.asset(
                   characterImageMap[character]!,
                   fit: BoxFit.fitHeight,
@@ -199,6 +200,10 @@ class PlayerAvatarWidget extends StatelessWidget {
             ),
           ),
 
+          // skill buttons
+          if (isMe)
+            Positioned(top: 0, left: 0, child: _buildSkillButtonsWidget()),
+
           // dead overlay
           if (health <= 0)
             Image.asset("assets/images/dead.png", height: height / 2.5),
@@ -208,29 +213,38 @@ class PlayerAvatarWidget extends StatelessWidget {
   }
 
   Widget _buildSkillButtonsWidget() {
-    return Row(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: characterSkillMap[character]!
           .map(
             (skill) => Tooltip(
               textStyle: const TextStyle(fontSize: 24, color: Colors.white),
               message: characterSkillDescriptionMap[skill],
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  // backgroundColor: Color.fromARGB(255, 120, 150, 90),
-                  backgroundColor: Colors.lightGreen,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16), // Rounded corners
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  onPressed: (characterSkillTypeMap[skill] ==
+                              CharacterSkillType.passive) ||
+                          (characterSkillTypeMap[skill] ==
+                                  CharacterSkillType.lordSkill &&
+                              role != RoleCardValue.zhuGong)
+                      ? null
+                      : () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 1.0, color: Colors.grey.shade800),
+                      borderRadius:
+                          BorderRadius.circular(16), // Rounded corners
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 15), // Button size
                   ),
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16, vertical: 15), // Button size
-                ),
-                child: Text(
-                  characterSkillNameMap[skill]!,
-                  style: TextStyle(
-                    fontSize: 24 * height / kDefaultCardHeight,
-                    color: Colors.amber.shade300
+                  child: Text(
+                    characterSkillNameMap[skill]!,
+                    style: TextStyle(
+                        fontSize: 24 * height / kDefaultCardHeight,
+                        color: Colors.black),
                   ),
                 ),
               ),
@@ -246,21 +260,11 @@ class PlayerAvatarWidget extends StatelessWidget {
       height: height,
       width: height * kCharacterImageAspectRatio +
           32 * height / kDefaultCardHeight,
-      child: Column(
+      child: Stack(
+        alignment: Alignment.centerRight,
         children: [
-          // if (isMe)
-          //   Padding(
-          //     padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 36),
-          //     child: _buildSkillButtonsWidget(),
-          //   ),
-          Stack(
-            alignment: Alignment.centerRight,
-            children: [
-              _buildBackgroundWidget(context),
-              _buildCharacterWidget(),
-            ],
-          ),
-
+          _buildBackgroundWidget(context),
+          _buildCharacterWidget(),
         ],
       ),
     );
